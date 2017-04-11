@@ -307,24 +307,6 @@ mir_pharmnet<-SpidermiRanalyze_mirnanet_pharm(mir_ph=mir_pharmaco,net=miRNA_NET)
 
 
 
-## `SpidermiRanalyze_mirna_extra_cir`: Integration of Extracellular/Circulating miRNA
-
-The user can select the extracellular/circulating miRNAs found in the obtained network.
-Extracellular/circulating miRNAs include data from mirandola database [@ref4].
-The user using the following parameteres can specify the network type: 
-
-* **mT** to obtain a miRNA-gene interaction
-* **mCT** to obtain a miRNA-gene-gene interaction.
-
-```{r, eval = FALSE}
-miRNA_NET_ext_circmT<-SpidermiRanalyze_mirna_extra_cir(data=miRNA_complNET,"mT")
-```
-
-
-
-```{r, eval = FALSE}
-miRNA_NET_ext_circmCT<-SpidermiRanalyze_mirna_extra_cir(data=miRNA_complNET,"mCT")
-```
 
 ## `SpidermiRanalyze_direct_net`: Searching by biomarkers of interest with direct interaction
 
