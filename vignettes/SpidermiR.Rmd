@@ -122,8 +122,9 @@ This techincal report gives a short overview of the essential `SpidermiR` method
 To install use the code below.
 
 ```{r, eval = FALSE}
-source("https://bioconductor.org/biocLite.R")
-biocLite("SpidermiR")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("SpidermiR")
 ```
 
 # `SpidermiRquery`: Searching network 
