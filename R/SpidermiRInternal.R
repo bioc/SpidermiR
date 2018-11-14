@@ -37,8 +37,6 @@
   env <- new.env(parent=emptyenv())
   env[["miRtar"]] <-
     "http://watson.compbio.iupui.edu:8080/miR2Disease/download/miRtar.txt"
-  env[["miRtarBase"]] <-
-  "mirtarbase.mbc.nctu.edu.tw/cache/download/7.0/hsa_MTI.xlsx"
     env[["miRwalk"]] <-
     "http://zmf.umm.uni-heidelberg.de/apps/zmf/mirwalk2/downloads/vtm/hsa-vtm-gene.rdata.zip"
   env[["miR2Disease"]] <-
@@ -50,7 +48,7 @@
 	  env[["pharmacomir"]] <-
     "http://pharmaco-mir.org/home/download_VERSE_db/pharmacomir_VERSE_DB.csv"
 	  env[["miRTarBase"]] <-
-	    "http://mirtarbase.mbc.nctu.edu.tw/cache/download/6.1/miRTarBase_SE_WR.xls"
+	    "http://mirtarbase.mbc.nctu.edu.tw/cache/download/7.0/miRTarBase_SE_WR.xls"
 	  env[["Tiger"]] <-
 	    "http://bioinfo.wilmer.jhu.edu/tiger/download/hs2tissue-Table.txt"
 	  env[["Tiger_mapping"]] <-

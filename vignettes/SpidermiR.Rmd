@@ -122,8 +122,9 @@ This techincal report gives a short overview of the essential `SpidermiR` method
 To install use the code below.
 
 ```{r, eval = FALSE}
-source("https://bioconductor.org/biocLite.R")
-biocLite("SpidermiR")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("SpidermiR")
 ```
 
 # `SpidermiRquery`: Searching network 
@@ -237,7 +238,7 @@ list<-SpidermiRdownload_miRNAvalidate(validated)
 The user can download extracellular circulating miRNAs from miRandola database
 
 ```{r, eval = FALSE}
-list<-SpidermiRdownload_miRNAextra_cir(miRNAextra_cir)
+list_circ<-SpidermiRdownload_miRNAextra_cir(miRNAextra_cir)
 ```
 
 
@@ -307,31 +308,13 @@ mir_pharmnet<-SpidermiRanalyze_mirnanet_pharm(mir_ph=mir_pharmaco,net=miRNA_NET)
 
 
 
-## `SpidermiRanalyze_mirna_extra_cir`: Integration of Extracellular/Circulating miRNA
-
-The user can select the extracellular/circulating miRNAs found in the obtained network.
-Extracellular/circulating miRNAs include data from mirandola database [@ref4].
-The user using the following parameteres can specify the network type: 
-
-* **mT** to obtain a miRNA-gene interaction
-* **mCT** to obtain a miRNA-gene-gene interaction.
-
-```{r, eval = FALSE}
-miRNA_NET_ext_circmT<-SpidermiRanalyze_mirna_extra_cir(data=miRNA_complNET,"mT")
-```
-
-
-
-```{r, eval = FALSE}
-miRNA_NET_ext_circmCT<-SpidermiRanalyze_mirna_extra_cir(data=miRNA_complNET,"mCT")
-```
 
 ## `SpidermiRanalyze_direct_net`: Searching by biomarkers of interest with direct interaction
 
 Starting from a set of biomarkers of interest (BI), genes, miRNA or both, given by the user, this function finds sub-networks including all direct interactions involving at least one of the BI.
 
 ```{r, eval = TRUE}
-biomark_of_interest<-c("hsa-miR-214","PTEN","FOXO1","hsa-miR-27a")
+biomark_of_interest<-c("hsa-miR-214","PTEN","FOXO1","hsa-miR-27a","PEX7","hsa-miR-30a-5p","EPT1")
 
 GIdirect_net<-SpidermiRanalyze_direct_net(data=miRNA_NET,BI=biomark_of_interest)
 ```
@@ -367,7 +350,7 @@ GIdirect_net_neigh<-SpidermiRanalyze_subnetwork_neigh(data=miRNA_NET,BI=biomark_
 
 ## `SpidermiRanalyze_degree_centrality`: Ranking degree centrality genes
 
-This function finds the number of direct neighbours of a BI and allows the selection of those BI with a number of direct neighbours higher than a selected cut-off.
+This function finds the number of direct neighbours of a node in a network and allows the selection of those nodes with a number of direct neighbours higher than a selected cut-off.
 
 ```{r, eval = FALSE}
 top10_cent_gene<-SpidermiRanalyze_degree_centrality(miRNA_NET,cut=10)
@@ -413,21 +396,6 @@ Starting from the community to which BI belong (the output of the previously des
 ```{r, eval = FALSE}
 gi=c("CF","ROCK1","KIT","CCND2")
 mol<-SpidermiRanalyze_Community_detection_bi(data=comm,BI=gi)
-```
-
-## `SpidermiRanalyze_DEnetworkTCGA`: Integration with TCGA data in order to obtain a network of  differentially expressed (DE) genes or miRNAs.
-
-`SpidermiRanalyze_DEnetworkTCGA` integrates the information of differential analysis of TCGA data in the network. The final result will be a network with only DE genes or miRNAs depending  whether the user chooses mRNA or miRNA  TCGA data.
-
-```{r, eval = FALSE}
-miRNA_cN <-data.frame(gA=c('IGFL3','GABRA1'),gB=c('IGFL2','KRT13'),stringsAsFactors=FALSE)
-tumour<-c("TCGA-E9-A1RD-01A","TCGA-E9-A1RC-01A")
-normal<-c("TCGA-BH-A18P-11A","TCGA-BH-A18L-11A") 
-de_int<-SpidermiRanalyze_DEnetworkTCGA(data=miRNA_cN,
-                                        TCGAmatrix=Data_CANCER_normUQ_filt,
-                                        tumour,
-                                        normal
-                                       )
 ```
 
 # `SpidermiRvisualize`: To visualize the network 
@@ -495,9 +463,9 @@ B<-matrix( c("Gene network", "Validated miRNA-target","","", "Predicted miRNA-ta
       
              "GeneMania", "miRTAR", "miRwalk","miRTarBase", "DIANA", "Miranda", "PicTar","TargetScan","miRandola","miR2disease","Pharmaco-miR",
              
-             "Current","N/A","miRwalk2","miRTarBase 6.1","DIANA- 5.0","N/A","N/A","TargetScan7.1","miRandola v 02/2017","N/A","N/A",
-             2016,2009,2015,"N/A",2013,2010,"N/A","2016",2017,2009,"N/A",
-             "http://genemania.org/data/current/","http://watson.compbio.iupui.edu:8080/miR2Disease/download/miRtar.txt","http://zmf.umm.uni-heidelberg.de/apps/zmf/mirwalk2/downloads/vtm/hsa-vtm-gene.rdata.zip","http://mirtarbase.mbc.nctu.edu.tw/cache/download/6.1/miRTarBase_SE_WR.xls","https://bioconductor.org/packages/release/bioc/html/miRNAtap.html","https://bioconductor.org/packages/release/bioc/html/miRNAtap.html","https://bioconductor.org/packages/release/bioc/html/miRNAtap.html","https://bioconductor.org/packages/release/bioc/html/miRNAtap.html","http://mirandola.iit.cnr.it/download/miRandola_version_02_2017.txt","http://watson.compbio.iupui.edu:8080/miR2Disease/download/AllEntries.txt","http://pharmaco-mir.org/home/download_VERSE_db/pharmacomir_VERSE_DB.csv"
+             "Current","N/A","miRwalk2","miRTarBase 7","DIANA- 5.0","N/A","N/A","TargetScan7.1","miRandola v 02/2017","N/A","N/A",
+             2016,2009,2015,2017,2013,2010,"N/A","2016",2017,2009,"N/A",
+             "http://genemania.org/data/current/","http://watson.compbio.iupui.edu:8080/miR2Disease/download/miRtar.txt","http://zmf.umm.uni-heidelberg.de/apps/zmf/mirwalk2/downloads/vtm/hsa-vtm-gene.rdata.zip","mirtarbase.mbc.nctu.edu.tw/cache/download/7.0/miRTarBase_SE_WR.xls","https://bioconductor.org/packages/release/bioc/html/miRNAtap.html","https://bioconductor.org/packages/release/bioc/html/miRNAtap.html","https://bioconductor.org/packages/release/bioc/html/miRNAtap.html","https://bioconductor.org/packages/release/bioc/html/miRNAtap.html","http://mirandola.iit.cnr.it/download/miRandola_version_02_2017.txt","http://watson.compbio.iupui.edu:8080/miR2Disease/download/AllEntries.txt","http://pharmaco-mir.org/home/download_VERSE_db/pharmacomir_VERSE_DB.csv"
              
              ), nrow=11, ncol=5)
 colnames(B)<-c("CATEGORY","EXTERNAL DATABASE","VERSION","LAST UPDATE","LINK")
