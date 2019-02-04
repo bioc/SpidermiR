@@ -35,12 +35,10 @@
 #it creates link 
 .url_cache <- local({
   env <- new.env(parent=emptyenv())
-  env[["miRtar"]] <-
-    "http://watson.compbio.iupui.edu:8080/miR2Disease/download/miRtar.txt"
     env[["miRwalk"]] <-
     "http://zmf.umm.uni-heidelberg.de/apps/zmf/mirwalk2/downloads/vtm/hsa-vtm-gene.rdata.zip"
-  env[["miR2Disease"]] <-
-    "http://watson.compbio.iupui.edu:8080/miR2Disease/download/AllEntries.txt"
+  env[["hmdd"]] <-
+    "http://www.cuilab.cn/static/hmdd3/data/alldata.txt"
   env[["mirandola"]] <-
     "http://mirandola.iit.cnr.it/download/miRandola_version_02_2017.txt"
   env[["geneMania"]] <-
