@@ -112,8 +112,8 @@ SpidermiRdownload_miRNAprediction<-function(mirna_list){
 #' @return a dataframe with miRNA target validated interactions
 SpidermiRdownload_miRNAvalidate<-function(validated){
     # querying miRtar database (validated interaction miRNA-gene)
-    site_mir2disease<-.url_cache$get("miRtar")
-    mir2disease<-read.delim(site_mir2disease,header = FALSE,quote = "",stringsAsFactors=FALSE)
+    #site_mir2disease<-.url_cache$get("miRtar")
+    #mir2disease<-read.delim(site_mir2disease,header = FALSE,quote = "",stringsAsFactors=FALSE)
     # querying miRNA WALK database (validated interaction miRNA-gene)
     temp <- tempfile()
     download.file(.url_cache$get("miRwalk"),temp)
@@ -122,13 +122,12 @@ SpidermiRdownload_miRNAvalidate<-function(validated){
     id<-t(sapply(id, '[', 1:max(sapply(id, length)))) 
     se<-int(id)
     # merging miRtar and miRNA walk information
-    mir2disease$V3<-NULL
-    mir2disease$V4<-NULL
-    mir_validated_targe<-rbind(mir2disease,se)
+
+    mir_validated_targe<-se
     site_mirtarbase<-.url_cache$get("miRTarBase")
     test <- read.xls(site_mirtarbase, quote="",stringsAsFactors=FALSE)
     pro<-as.data.frame(cbind(test$X.miRNA.,test$X.Target.Gene.))
-    dem<- print(as.data.frame(sapply(pro, function(x) gsub("\"", "", x))))
+    dem<- as.data.frame(sapply(pro, function(x) gsub("\"", "", x)))
     mir_validated_targe3<-rbind(mir_validated_targe,dem)
     return(mir_validated_targe3)
 }
