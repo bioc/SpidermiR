@@ -43,8 +43,8 @@
     "http://mirandola.iit.cnr.it/download/miRandola_version_02_2017.txt"
   env[["geneMania"]] <-
     "http://genemania.org/data/current/"
-	  env[["pharmacomir"]] <-
-    "http://pharmaco-mir.org/home/download_VERSE_db/pharmacomir_VERSE_DB.csv"
+	  env[["dgidb"]] <-
+	"http://dgidb.org/data/interactions.tsv"
 	  env[["miRTarBase"]] <-
 	    "http://mirtarbase.mbc.nctu.edu.tw/cache/download/7.0/miRTarBase_SE_WR.xls"
 	  env[["Tiger"]] <-

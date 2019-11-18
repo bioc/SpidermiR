@@ -270,19 +270,4 @@ SpidermiRanalyze_Community_detection_bi<-function(data,BI){
 } 
 
 
-#' @title Integration of pharmacomiR in the network
-#' @description SpidermiRanalyze_mirnanet_pharm integrates both miRNA targeting of the gene and the gene-drug interaction from PharmacomiR database in the network
-#' @param mir_ph SpidermiRdownload_pharmacomir output
-#' @param net a network data (e.g. SpidermiRanalyze_mirna_network or SpidermiRanalyze_mirna_gene_complnet output)
-#' @export
-#' @return a dataframe with the integation of network and pharmacomiR data
-#' @examples
-#' mir_p <-data.frame(gA=c('hsa-let-7a','CASP3'),gB=c('CASP3','paclitaxel'),stringsAsFactors=FALSE)
-#' net_p <-data.frame(gA=c('hsa-let-7a','hsa-miR-300'),gB=c('FOXM1','KPNA4'),stringsAsFactors=FALSE)
-#' mol<-SpidermiRanalyze_mirnanet_pharm(mir_ph=mir_p,net=net_p)
-SpidermiRanalyze_mirnanet_pharm<-function(mir_ph,net){
-  sss<-rbind(net,mir_ph)
-  s2<-as.data.frame(sss[!duplicated(sss), ]) 
-  return(s2)
-}
 

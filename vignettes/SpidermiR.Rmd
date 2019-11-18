@@ -230,12 +230,18 @@ list_circ<-SpidermiRdownload_miRNAextra_cir(miRNAextra_cir)
 
 
 ## `SpidermiRdownload_pharmacomir`: Download Pharmaco-miR Verified Sets from PharmacomiR database
-The user can download Pharmaco-miR Verified Sets from PharmacomiR database [@ref6].
+The user can download Pharmaco-miR predicted Sets from a fisher test. This function will give an information about the significant interactions between the miRNAs and the drug of interest (in this case tamoxifen). p-value and FDR will be visualized. 
 
 ```{r, eval = TRUE}
-mir_pharmaco<-SpidermiRdownload_pharmacomir(pharmacomir=pharmacomir)
+list<-SpidermiRdownload_miRNAvalidate(validated)
+drug="TAMOXIFEN"
+drug_genetarget<-SpidermiRdownload_pharmacomir(list,drug="TAMOXIFEN")
 ```
+The fisher test will be calculated considering the interactions drug and gene derived by dgIdb database.
 
+```{r, eval = TRUE}
+drug_genetarget<-SpidermiRdownload_drug_gene(drug_gene)
+```
 
 
 # `SpidermiRprepare`: Preparing the data
@@ -258,14 +264,6 @@ knitr::kable(geneSymb_net[[1]][1:5,c(1,2,3,5,8)], digits = 2,
 
 # `SpidermiRanalyze`: : Analyze data from network data
 
-
-## `SpidermiRanalyze_mirnanet_pharm`: Integration of pharmacomiR in the network
-The user in this step can integrate the pharmacomiR database in order to link miRNA and drug effect in a specific network.
-
-```{r, eval = TRUE}
-miRNA_NET <-data.frame(V1=c('hsa-let-7a','CASP3'),V2=c('CASP3','TAMOXIFEN'),stringsAsFactors=FALSE)
-mir_pharmnet<-SpidermiRanalyze_mirnanet_pharm(mir_ph=mir_pharmaco,net=miRNA_NET)
-```
 
 
 
@@ -360,32 +358,7 @@ mol<-SpidermiRanalyze_Community_detection_bi(data=comm,BI=gi)
 ```
 
 # `SpidermiRvisualize`: To visualize the network 
-## `SpidermiRvisualize_mirnanet`: To Visualize the network. 
-The user can visualize a 3D representation of the network  in different colours for miRNA, genes, and pharmaco.  The user can manage the network directly moving the nodes and the edges, in order to interpret the results in the graphic way. 
 
-```{r, eval = TRUE}
-library(networkD3)
-
-SpidermiRvisualize_mirnanet(data=mir_pharmnet[sample(nrow(mir_pharmnet), 100), ] )
-```
-
-## `SpidermiRvisualize_BI`: To Visualize the network from a set of BI. 
-
-Starting from a graphical representation of a network, the user can highlight with a different color specific BI. 
-
-```{r, eval = TRUE}
-
-biomark_of_interest<-c("hsa-let-7b","MUC1","PEX7","hsa-miR-222")
-SpidermiRvisualize_BI(data=mir_pharmnet[sample(nrow(mir_pharmnet), 100), ],BI=biomark_of_interest)
-```
-
-
-## `SpidermiRvisualize_direction`: To visualize the network 
-```{r, eval = TRUE}
-library(visNetwork)
-
-SpidermiRvisualize_direction(data=mir_pharmnet[sample(nrow(mir_pharmnet), 100), ] )
-```
 
 
 ## `SpidermiRvisualize_plot_target`: Visualize the plot with miRNAs and the number of their targets in the network. 
