@@ -48,7 +48,7 @@
 	 # env[["matador"]] <-	  
 	 # "http://matador.embl.de/media/download/matador.tsv.gz"
 	  env[["miRTarBase"]] <-
-	    "http://mirtarbase.mbc.nctu.edu.tw/cache/download/7.0/miRTarBase_SE_WR.xls"
+	    "http://mirtarbase.cuhk.edu.cn/cache/download/8.0/miRTarBase_SE_WR.xls"
 	  env[["Tiger"]] <-
 	    "http://bioinfo.wilmer.jhu.edu/tiger/download/hs2tissue-Table.txt"
 	  env[["Tiger_mapping"]] <-
