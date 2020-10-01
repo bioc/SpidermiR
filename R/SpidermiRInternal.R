@@ -44,7 +44,7 @@
   env[["geneMania"]] <-
     "http://genemania.org/data/current/"
 	  env[["dgidb"]] <-
-	"http://dgidb.org/data/interactions.tsv"
+	"https://www.dgidb.org/data/monthly_tsvs/2020-Sep/interactions.tsv"
 	 # env[["matador"]] <-	  
 	 # "http://matador.embl.de/media/download/matador.tsv.gz"
 	  env[["miRTarBase"]] <-
