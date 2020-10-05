@@ -11,9 +11,8 @@ citEntry(entry = "Article",
                                    as.person("Giancarlo Mauri"),
                                    as.person("Isabella Castiglioni")
          ),
-         journal = "manuscript in preparation",
-         year         = "2015",
-         journal      = "",
+         journal = "Int J Mol Sci.",
+         year         = "2017",
          textVersion  =
              paste("Claudia Cava, Antonio Colaprico, Alex Graudenzi,",
                    "Gloria Bertoli, Gianluca Bontempi, Giancarlo Mauri,",
