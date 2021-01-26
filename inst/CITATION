@@ -11,7 +11,7 @@ citEntry(entry = "Article",
                                    as.person("Giancarlo Mauri"),
                                    as.person("Isabella Castiglioni")
          ),
-         journal = "Int J Mol Sci.",
+         journal = "Int J Mol Sci. ",
          year         = "2017",
          textVersion  =
              paste("Claudia Cava, Antonio Colaprico, Alex Graudenzi,",

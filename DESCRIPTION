@@ -2,8 +2,8 @@ Package: SpidermiR
 Type: Package
 Title: SpidermiR: An R/Bioconductor package for integrative network
         analysis with miRNA data
-Version: 1.21.0
-Date: 10-05-2020
+Version: 1.19.1
+Date: 26-01-2021
 Author: Claudia Cava,
     Antonio Colaprico,
     Alex Graudenzi,
@@ -34,7 +34,7 @@ VignetteBuilder: knitr
 LazyData: true
 URL: https://github.com/claudiacava/SpidermiR
 BugReports: https://github.com/claudiacava/SpidermiR/issues
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 NeedsCompilation: no
 Packaged: 2019-11-22 02:55:38 UTC; biocbuild
 git_url: https://git.bioconductor.org/packages/SpidermiR
