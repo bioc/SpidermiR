@@ -107,8 +107,11 @@ SpidermiRdownload_miRNAvalidate<-function(validated){
 
     mir_validated_targe<-se
     site_mirtarbase<-.url_cache$get("miRTarBase")
+    site_mirtarbase<-sub("s", "", site_mirtarbase)
     test <- read.xls(site_mirtarbase, quote="",stringsAsFactors=FALSE)
-    pro<-as.data.frame(cbind(test$X.miRNA.,test$X.Target.Gene.))
+    test2<-test[test$X.Species..miRNA..=="\"Homo sapiens\"",]
+    
+    pro<-as.data.frame(cbind(test2$X.miRNA.,test2$X.Target.Gene.))
     dem<- as.data.frame(sapply(pro, function(x) gsub("\"", "", x)))
     mir_validated_targe3<-rbind(mir_validated_targe,dem)
     mir_validated_targe4<-mir_validated_targe3[!duplicated(mir_validated_targe3), ]

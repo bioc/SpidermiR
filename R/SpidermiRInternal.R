@@ -22,14 +22,6 @@
 
 
 
-#' @importFrom networkD3 simpleNetwork
-.SpidermiRvisualize_gene<-function(data){
-  s<-as.data.frame(data)
-  Source <- (s[1])
-  Target <- (s[2])
-  NetworkData <- data.frame(Source, Target)
-  simpleNetwork(NetworkData,linkColour = "gray",textColour = "black",zoom = TRUE)
-}
 
 
 #it creates link 
@@ -48,7 +40,7 @@
 	 # env[["matador"]] <-	  
 	 # "http://matador.embl.de/media/download/matador.tsv.gz"
 	  env[["miRTarBase"]] <-
-	    "http://mirtarbase.cuhk.edu.cn/cache/download/8.0/miRTarBase_SE_WR.xls"
+	    "https://mirtarbase.cuhk.edu.cn/~miRTarBase/miRTarBase_2019/cache/download/8.0/miRTarBase_SE_WR.xls"
 	  env[["Tiger"]] <-
 	    "http://bioinfo.wilmer.jhu.edu/tiger/download/hs2tissue-Table.txt"
 	  env[["Tiger_mapping"]] <-
