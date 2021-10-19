@@ -27,8 +27,8 @@
 #it creates link 
 .url_cache <- local({
   env <- new.env(parent=emptyenv())
-    env[["miRwalk"]] <-
-    "http://zmf.umm.uni-heidelberg.de/apps/zmf/mirwalk2/downloads/vtm/hsa-vtm-gene.rdata.zip"
+    #env[["miRwalk"]] <-
+   # "http://zmf.umm.uni-heidelberg.de/apps/zmf/mirwalk2/downloads/vtm/hsa-vtm-gene.rdata.zip"
   env[["hmdd"]] <-
     "http://www.cuilab.cn/static/hmdd3/data/alldata.txt"
   env[["mirandola"]] <-

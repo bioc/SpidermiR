@@ -97,15 +97,15 @@ SpidermiRdownload_miRNAvalidate<-function(validated){
     #site_mir2disease<-.url_cache$get("miRtar")
     #mir2disease<-read.delim(site_mir2disease,header = FALSE,quote = "",stringsAsFactors=FALSE)
     # querying miRNA WALK database (validated interaction miRNA-gene)
-    temp <- tempfile()
-    download.file(.url_cache$get("miRwalk"),temp)
-    sx<-unz(temp,"hsa-vtm-gene.rdata.Rdata")
-    load(sx)
-    id<-t(sapply(id, '[', 1:max(sapply(id, length)))) 
-    se<-int(id)
+   # temp <- tempfile()
+    #download.file(.url_cache$get("miRwalk"),temp)
+    #sx<-unz(temp,"hsa-vtm-gene.rdata.Rdata")
+    #load(sx)
+    #id<-t(sapply(id, '[', 1:max(sapply(id, length)))) 
+    #se<-int(id)
     # merging miRtar and miRNA walk information
 
-    mir_validated_targe<-se
+    #mir_validated_targe<-se
     site_mirtarbase<-.url_cache$get("miRTarBase")
     site_mirtarbase<-sub("s", "", site_mirtarbase)
     test <- read.xls(site_mirtarbase, quote="",stringsAsFactors=FALSE)
@@ -113,10 +113,10 @@ SpidermiRdownload_miRNAvalidate<-function(validated){
     
     pro<-as.data.frame(cbind(test2$X.miRNA.,test2$X.Target.Gene.))
     dem<- as.data.frame(sapply(pro, function(x) gsub("\"", "", x)))
-    mir_validated_targe3<-rbind(mir_validated_targe,dem)
-    mir_validated_targe4<-mir_validated_targe3[!duplicated(mir_validated_targe3), ]
+   # mir_validated_targe3<-rbind(mir_validated_targe,dem)
+  #  mir_validated_targe4<-mir_validated_targe3[!duplicated(mir_validated_targe3), ]
     
-    return(mir_validated_targe4)
+    return(dem)
 }
 
 
