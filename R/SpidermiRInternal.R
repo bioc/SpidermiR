@@ -39,8 +39,8 @@
 	"https://www.dgidb.org/data/monthly_tsvs/2020-Sep/interactions.tsv"
 	 # env[["matador"]] <-	  
 	 # "http://matador.embl.de/media/download/matador.tsv.gz"
-	  env[["miRTarBase"]] <-
-	    "https://mirtarbase.cuhk.edu.cn/~miRTarBase/miRTarBase_2019/cache/download/8.0/miRTarBase_SE_WR.xls"
+	  #env[["miRTarBase"]] <-
+	   # "https://mirtarbase.cuhk.edu.cn/~miRTarBase/miRTarBase_2019/cache/download/8.0/miRTarBase_SE_WR.xls"
 	  env[["Tiger"]] <-
 	    "http://bioinfo.wilmer.jhu.edu/tiger/download/hs2tissue-Table.txt"
 	  env[["Tiger_mapping"]] <-

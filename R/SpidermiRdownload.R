@@ -83,58 +83,10 @@ SpidermiRdownload_miRNAprediction<-function(mirna_list){
 
 
 
-#' @title Download miRNA validated database
-#' @description SpidermiRdownload_miRNAprediction will download miRNA validated target
-#' @param validated parameter
-#' @examples
-#' list<-SpidermiRdownload_miRNAvalidate(validated)
-#' @export
-#' @import stats
-#' @importFrom gdata read.xls 
-#' @return a dataframe with miRNA target validated interactions
-SpidermiRdownload_miRNAvalidate<-function(validated){
-    # querying miRtar database (validated interaction miRNA-gene)
-    #site_mir2disease<-.url_cache$get("miRtar")
-    #mir2disease<-read.delim(site_mir2disease,header = FALSE,quote = "",stringsAsFactors=FALSE)
-    # querying miRNA WALK database (validated interaction miRNA-gene)
-   # temp <- tempfile()
-    #download.file(.url_cache$get("miRwalk"),temp)
-    #sx<-unz(temp,"hsa-vtm-gene.rdata.Rdata")
-    #load(sx)
-    #id<-t(sapply(id, '[', 1:max(sapply(id, length)))) 
-    #se<-int(id)
-    # merging miRtar and miRNA walk information
-
-    #mir_validated_targe<-se
-    site_mirtarbase<-.url_cache$get("miRTarBase")
-    site_mirtarbase<-sub("s", "", site_mirtarbase)
-    test <- read.xls(site_mirtarbase, quote="",stringsAsFactors=FALSE)
-    test2<-test[test$X.Species..miRNA..=="\"Homo sapiens\"",]
-    
-    pro<-as.data.frame(cbind(test2$X.miRNA.,test2$X.Target.Gene.))
-    dem<- as.data.frame(sapply(pro, function(x) gsub("\"", "", x)))
-   # mir_validated_targe3<-rbind(mir_validated_targe,dem)
-  #  mir_validated_targe4<-mir_validated_targe3[!duplicated(mir_validated_targe3), ]
-    
-    return(dem)
-}
 
 
 
-#' @title Download miRNA validated database
-#' @description SpidermiRdownload_miRNAextra_cir will download miRNA validated target
-#' @param miRNAextra_cir parameter
-#' @examples
-#' list<-SpidermiRdownload_miRNAextra_cir(miRNAextra_cir)
-#' @export
-#' @import stats
-#' @return a dataframe with miRNA target validated interactions
-SpidermiRdownload_miRNAextra_cir<-function(miRNAextra_cir){
-  # querying miRandola database (Extracellular Circulating microRNAs)
-  site<-.url_cache$get("mirandola")
-  mirandola<-read.delim(site,header = TRUE,quote = "",stringsAsFactors=FALSE)
-  return(mirandola)
-}
+
 
 
 
